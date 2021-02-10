@@ -1,0 +1,7 @@
+django-crispy-forms=1.10.0
+django-shopping-cart=0.1
+django-widget-tweaks=1.4.8
+filelock=3.0.12
+mysqlclient=2.0.3
+Pillo=8.1.0
+pip=21.0
