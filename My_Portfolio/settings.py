@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Portfolio_App',
+    'django_cleanup',
 ]
 
 MIDDLEWARE = [
