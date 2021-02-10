@@ -32,7 +32,41 @@
     </section>
     {% include 'Portfolio_App/navbar.html' %}
     {% include 'Portfolio_App/about.html' %}
-    {% include 'Portfolio_App/skills.html' %}
+    <div class="container" id="SKILLS">
+        <div class="row">
+            <div class="col">
+                <h2 class="bg-red text-center py-5">
+                    SKILLS
+
+                </h2>
+
+            </div>
+        </div>
+
+        <div class="row py-5">
+            <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+                <h5>I have some special skills in programming language like C,Java,Python,JavaScript,SQL.In my future i
+                    will work on Data Mining.
+
+                </h5>
+            </div>
+
+            {% for skill in skills %}
+            <div class="col-md-6 animate-box  pb-5" data-animate-effect="fadeInRight">
+                <div class="progress-wrap">
+                    <h3>{{skill.skillname}}</h3>
+                    <div class="progress">
+                        <div class="progress-bar color-6" role="progressbar" aria-valuenow="{{skill.skillPercent}}"
+                            aria-valuemin="0" aria-valuemax="100" style="width:{{ skill.skillPercent }}%">
+                            <span>{{skill.skillPercent}}%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
     {% include 'Portfolio_App/education.html' %}
     {% include 'Portfolio_App/projects.html' %}
     {% include 'Portfolio_App/contact.html' %}

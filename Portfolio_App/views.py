@@ -5,4 +5,4 @@ from Portfolio_App.models import Skill
 
 def index(request):
     skills = Skill.objects.all()
-    return render(request, 'Portfolio_App/skills.html', context={'skills': skills})
+    return render(request, 'Portfolio_App/index.html', context={'skills': skills})
