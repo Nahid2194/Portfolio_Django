@@ -68,7 +68,52 @@
         </div>
     </div>
     {% include 'Portfolio_App/education.html' %}
-    {% include 'Portfolio_App/projects.html' %}
+
+
+    <div class="project-container">
+        <div class="container" id="PROJECT">
+            <div class="row">
+                <div class="col text-white font-weight-bolder text-center py-5">
+                    <h2>Projects</h2>
+                </div>
+            </div>
+            <div class="row mb-5 pb-5">
+                <div class="col-md-3">
+                    <img src="{% static 'images/GithubProject.jpg' %}" class="img-fluid" alt="">
+                    <a href="https://nahid2194.github.io/Github_Finder_JavaScript/" target="_blank" class="text">Github
+                        Finder Using JavaScript</a>
+                </div>
+                <div class="col-md-3">
+                    <img src="{% static 'images/Shopping-Cart.jpg' %}" class="img-fluid" alt="">
+                    <a href="https://nahid2194.github.io/Shopping-Cart_JavaScript/" target="_blank"
+                        class="text">Shopping Cart using javaScript</a>
+                </div>
+                <div class="col-md-3">
+                    <img src="{% static 'images/p3.jpg' %}" class="img-fluid" alt="">
+                    <a href="" class="text">Nahid Hasan</a>
+                </div>
+                <div class="col-md-3">
+                    <img src="{% static 'images/p4.jpg' %}" class="img-fluid" alt="">
+                    <a href="" class="text">Lorem ipsum </a>
+                </div>
+
+            </div>
+
+            <div class="row mb-5 pb-5">
+                {% for project in projects %}
+                <div class="col-md-3">
+                    <img src="/static/images/{{project.project_pic}}" class="img-fluid" alt="">
+                    <a href="" class="text">{{project.title}}</a>
+                </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+
+
+
     {% include 'Portfolio_App/contact.html' %}
     {% include 'Portfolio_App/footer.html' %}
     <div class="container">
