@@ -18,3 +18,7 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Portfolio(models.Model):
+    portfolio_pic = models.ImageField(upload_to='Portfolio', blank=False)
