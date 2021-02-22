@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from Portfolio_App.models import Skill, Project, Portfolio
-from Portfolio_App.forms import LoginForm
+from Portfolio_App.forms import LoginForm, SkillForm
 from django.urls import reverse
 # Create your views here.
 
@@ -25,10 +25,30 @@ def admin_login(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('admin_form'))
 
-    return render(request, 'Portfolio_App/login.html', context={'form': form})
+    return render(request, 'adminLogin/login.html', context={'form': form, 'name': 'Login'})
 
 
+@login_required
 def admin_form(request):
-    return render(request, 'Portfolio_App/login.html',)
+    return render(request, 'adminLogin/nav_form.html',)
+
+
+@login_required
+def add_skills(request):
+    form = SkillForm()
+
+    return render(request, 'adminLogin/submit_form.html', context={'form': form, 'name': 'Add Skill'})
+
+
+@login_required
+def add_portfolio(request):
+
+    return render(request, 'adminLogin/submit_form.html',)
+
+
+@login_required
+def add_project(request):
+
+    return render(request, 'adminLogin/submit_form.html',)

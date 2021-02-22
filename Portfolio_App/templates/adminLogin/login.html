@@ -7,7 +7,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/nahid.png' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>Admin {{name}}</title>
 
     <style>
         .login {
@@ -18,11 +25,13 @@
             text-align: center;
             margin-top: 50px;
             margin-bottom: 50px;
+            padding-bottom: 20px;
         }
 
         .text {
             margin-top: 15px;
             margin-bottom: 15px;
+            color: aqua;
         }
 
         .form {
@@ -54,12 +63,12 @@
 
     <center>
         <div class="login">
-            <h1 class="text">Login:</h1>
+            <h1 class="text">{{name}}:</h1>
 
             <form action="" method="POST" class="form">
                 {{ form | crispy }}
                 {% csrf_token %}
-                <button type="submit" class="btn btn-primary button">Login</button>
+                <button type="submit" class="btn btn-primary button">{{name}}</button>
             </form>
 
 
