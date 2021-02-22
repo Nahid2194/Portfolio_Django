@@ -83,7 +83,7 @@
                 {% for project in projects %}
                 <div class="col-md-3">
                     <img src="/static/images/{{project.project_pic}}" class="img-fluid" alt="">
-                    <a href="" class="text">{{project.title}}</a>
+                    <a href="{{project.project_url}}" target="_blank" class="text">{{project.title}}</a>
                 </div>
                 {% endfor %}
 
