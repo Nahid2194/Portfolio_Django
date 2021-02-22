@@ -20,3 +20,15 @@ class SkillForm(forms.ModelForm):
     class Meta:
         model = Skill
         fields = '__all__'
+
+
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ['title', 'project_url', 'project_pic']
+
+
+class PortfolioForm(forms.ModelForm):
+    class Meta:
+        model = Portfolio
+        fields = '__all__'

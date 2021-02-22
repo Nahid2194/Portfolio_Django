@@ -66,12 +66,12 @@
     {% include 'adminLogin/nav_form.html' %}
     <center>
         <div class="login">
-            <h1 class="text1"> {{name}}:</h1>
+            <h1 class="text1"> Portfolio Updated:</h1>
 
-            <form action="" method="POST" class="form">
+            <form method="POST" enctype="multipart/form-data" class="form">
                 {{ form | crispy }}
                 {% csrf_token %}
-                <button type="submit" class="btn btn-primary button">{{name}}</button>
+                <button type="submit" class="btn btn-primary button">Upload</button>
             </form>
 
 

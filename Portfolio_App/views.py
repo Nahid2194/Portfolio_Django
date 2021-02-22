@@ -3,8 +3,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from Portfolio_App.models import Skill, Project, Portfolio
-from Portfolio_App.forms import LoginForm, SkillForm
+from Portfolio_App.forms import LoginForm, SkillForm, ProjectForm, PortfolioForm
 from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import CreateView
+
 # Create your views here.
 
 
@@ -44,11 +47,22 @@ def add_skills(request):
 
 @login_required
 def add_portfolio(request):
+    form = PortfolioForm()
+    if request.method == 'POST':
+        form = PortfolioForm(request.POST, request.FILES)
+        if form.is_valid():
+            portfolio_pic = form.save(commit=False)
+            portfolio_pic.save()
+            return HttpResponseRedirect(reverse('admin_form'))
 
-    return render(request, 'adminLogin/submit_form.html',)
+    return render(request, 'adminLogin/submit_form.html', context={'form': form, 'name': 'Add Portfolio'})
 
 
-@login_required
-def add_project(request):
+class add_project(LoginRequiredMixin, CreateView):
+    model = Project
+    template_name = 'adminLogin/submit_form.html'
+    fields = ['title', 'project_url', 'project_pic']
 
-    return render(request, 'adminLogin/submit_form.html',)
+    def form_valid(self, form):
+        form.save()
+        return HttpResponseRedirect(reverse('admin_form'))
