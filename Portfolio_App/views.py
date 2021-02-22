@@ -58,11 +58,20 @@ def add_portfolio(request):
     return render(request, 'adminLogin/submit_form.html', context={'form': form, 'name': 'Add Portfolio'})
 
 
-class add_project(LoginRequiredMixin, CreateView):
-    model = Project
-    template_name = 'adminLogin/submit_form.html'
-    fields = ['title', 'project_url', 'project_pic']
+@login_required
+def add_project(request):
+    form = ProjectForm()
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.save()
+            return HttpResponseRedirect(reverse('admin_form'))
 
-    def form_valid(self, form):
-        form.save()
-        return HttpResponseRedirect(reverse('admin_form'))
+    return render(request, 'adminLogin/submit_form.html', context={'form': form, 'name': 'Add Project Details'})
+    # template_name = 'adminLogin/submit_form.html'
+    # fields = ['title', 'project_url', 'project_pic']
+
+    # def form_valid(self, form):
+    #     form.save()
+    #     return HttpResponseRedirect(reverse('admin_form'))
