@@ -41,7 +41,12 @@ def admin_form(request):
 @login_required
 def add_skills(request):
     form = SkillForm()
-
+    if request.method == 'POST':
+        form = SkillForm(request.POST)
+        if form.is_valid():
+            skill = form.save(commit=False)
+            skill.save()
+            return HttpResponseRedirect(reverse('admin_form'))
     return render(request, 'adminLogin/submit_form.html', context={'form': form, 'name': 'Add Skill'})
 
 
@@ -69,9 +74,3 @@ def add_project(request):
             return HttpResponseRedirect(reverse('admin_form'))
 
     return render(request, 'adminLogin/submit_form.html', context={'form': form, 'name': 'Add Project Details'})
-    # template_name = 'adminLogin/submit_form.html'
-    # fields = ['title', 'project_url', 'project_pic']
-
-    # def form_valid(self, form):
-    #     form.save()
-    #     return HttpResponseRedirect(reverse('admin_form'))
